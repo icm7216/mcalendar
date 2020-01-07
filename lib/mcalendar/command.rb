@@ -6,6 +6,6 @@ rescue
   d = Date.today
 end
 
-calendar = Mcalendar::Calendar.new(d.year, d.month)s
+calendar = Mcalendar::Calendar.new(d.year, d.month)
 calendar.display
 calendar.pdf
