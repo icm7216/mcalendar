@@ -1,6 +1,7 @@
-require "mcalendar/version"
+require 'date'
+require "prawn"
+require "prawn/table"
 
-module Mcalendar
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative 'mcalendar/calendar'
+require_relative 'mcalendar/command'
+require_relative 'mcalendar/version'
