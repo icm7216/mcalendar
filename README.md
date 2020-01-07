@@ -1,4 +1,5 @@
-# Mcalendar
+
+# Mcalendar [![Gem Version](https://badge.fury.io/rb/mcalendar.svg)](https://badge.fury.io/rb/mcalendar)
 
 Ruby monthly calendar, console and pdf.
 
