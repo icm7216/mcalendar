@@ -1,6 +1,6 @@
 require "test_helper"
 
-class McalendarTest < Minitest::Test
+class ExampleTest < Test::Unit::TestCase
   def test_that_it_has_a_version_number
     refute_nil ::Mcalendar::VERSION
   end
