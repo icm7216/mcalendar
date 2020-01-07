@@ -51,7 +51,7 @@ module Mcalendar
           row(0).padding_bottom = 0
         end
       end
-      pdf.render_file "pdf/calendar.pdf"
+      pdf.render_file "calendar.pdf"
     end
 
   end
