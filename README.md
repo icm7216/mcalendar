@@ -25,7 +25,7 @@ Or install it yourself as:
 
 If you want to create a calendar for this month.
 
-When you run the command, the calendar appears on the console. The pdf file is created in the pfd directory.
+When you run the command, the calendar appears on the console. The pdf file is created in the current directory.
 ```
 mcalendar
 ```
