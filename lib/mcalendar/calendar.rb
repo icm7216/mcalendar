@@ -1,13 +1,24 @@
 
 module Mcalendar
+  DEFAULT_PDF_NAME = "calendar.pdf"
+
   class Calendar
     WEEKS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
-    def initialize(year, month)
+    def initialize(year, month, pdf_name)
       @first_of_month = Date.new(year, month, 1)
       @end_of_month = Date.new(year, month, -1)
       @days = (1..@end_of_month.day).map {|m| "%2d" % m}
       @first_of_month.wday.times {@days.unshift("  ")}
+      set_pdf_name(pdf_name)
+    end
+    
+    def set_pdf_name(name)
+      if  name.nil? || name.empty?
+        @pdf_name = Mcalendar::DEFAULT_PDF_NAME
+      else
+        @pdf_name = name
+      end
     end
 
     def month_title
@@ -51,7 +62,7 @@ module Mcalendar
           row(0).padding_bottom = 0
         end
       end
-      pdf.render_file "calendar.pdf"
+      pdf.render_file @pdf_name
     end
 
   end
