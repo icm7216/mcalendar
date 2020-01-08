@@ -18,9 +18,12 @@ module Mcalendar
         d = Date.today
       end
       
+      options = Mcalendar::Options.parse(@argv)
+
+
       calendar = Mcalendar::Calendar.new(d.year, d.month)
       calendar.display
-      calendar.pdf
+      # calendar.pdf
     end
   end
 end
