@@ -1,13 +1,13 @@
 require "test_helper"
 
-class ExampleTest < Test::Unit::TestCase
+class McalendarTest < Test::Unit::TestCase
   self.test_order = :defined
 
   sub_test_case 'calendar text' do
   
     setup do
       d = Date.parse("2020/01")      
-      @calendar = Mcalendar::Calendar.new(d.year, d.month)
+      @calendar = Mcalendar::Calendar.new(d.year, d.month, "2020/01")
     end
   
     test '#calendar at 2020/01' do
@@ -18,6 +18,26 @@ class ExampleTest < Test::Unit::TestCase
         ["12  13  14  15  16  17  18"], 
         ["19  20  21  22  23  24  25"], 
         ["26  27  28  29  30  31"]]], @calendar.to_s
+    end
+  end
+
+  sub_test_case 'option parser' do
+    
+    test '#no option' do
+      d = Date.today
+      args = ['']
+      expected = {:date => d, :opt => {}}
+      assert_equal expected, Mcalendar::Options.parse(args)
+    end
+
+    test '#full option' do
+      d = Date.parse("2020/01")
+      args = ["2020/01", "-c", "-p", "-n", "test_pdf"]
+      expected = {:date => d, 
+        :opt => { :console => true, 
+                  :pdf => true, 
+                  :name => "test_pdf"}}
+      assert_equal expected, Mcalendar::Options.parse(args)
     end
   end
 

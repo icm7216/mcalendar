@@ -3,3 +3,4 @@ require "mcalendar"
 
 require 'test/unit'
 require 'test/unit/rr'
+require 'date'
