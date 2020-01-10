@@ -6,4 +6,5 @@ require "optparse"
 require_relative 'mcalendar/calendar'
 require_relative 'mcalendar/command'
 require_relative 'mcalendar/options'
+require_relative 'mcalendar/output_pdf'
 require_relative 'mcalendar/version'
