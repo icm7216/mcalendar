@@ -31,12 +31,13 @@ module Mcalendar
       table(@calendar, cell_style: {height: @cell_height}) do
         cells.style(width: 79, align: :center, size: 19)
         row(0).padding = 15
+        column(0).map {|c| c.text_color = "FF0000"}
       end
     end
 
     def calendar_render
       # stroke_axis
-      
+
       bounding_box([0, 400], width: 553, height: 400) do
         stroke_bounds
         month_header
