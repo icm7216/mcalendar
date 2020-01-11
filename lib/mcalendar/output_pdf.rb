@@ -24,6 +24,7 @@ module Mcalendar
         cells.style(width: 79, height: 40, align: :center, size: 19)
         row(0).padding_top = 10
         row(0).padding_bottom = 0
+        cells[0, 0].text_color = "FF0000"
       end
     end
     
