@@ -3,7 +3,7 @@ module Mcalendar
 
     def initialize(obj_calendar)
       @month_header = [[obj_calendar.month_title]]
-      @day_of_week = [Mcalendar::DAY_OF_WEEK] 
+      @day_of_week = [Mcalendar::Config::DAY_OF_WEEK] 
       @calendar = obj_calendar.days.each_slice(7).to_a
       @cell_height = @calendar.size > 5 ? 50 : 60
  
@@ -24,7 +24,7 @@ module Mcalendar
         cells.style(width: 79, height: 40, align: :center, size: 19)
         row(0).padding_top = 10
         row(0).padding_bottom = 0
-        cells[0, 0].text_color = "FF0000"
+        cells[0, 0].text_color = Mcalendar::Config::COLOR[:red]
       end
     end
     
@@ -32,7 +32,7 @@ module Mcalendar
       table(@calendar, cell_style: {height: @cell_height}) do
         cells.style(width: 79, align: :center, size: 19)
         row(0).padding = 15
-        column(0).map {|c| c.text_color = "FF0000"}
+        column(0).map {|c| c.text_color = Mcalendar::Config::COLOR[:red]}
       end
     end
 
