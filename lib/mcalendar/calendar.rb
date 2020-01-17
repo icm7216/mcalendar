@@ -1,7 +1,5 @@
 
 module Mcalendar
-  DEFAULT_PDF_NAME = "calendar.pdf"
-  DAY_OF_WEEK = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
   class Calendar
     attr_reader :pdf_name, :month_title, :days
@@ -17,7 +15,7 @@ module Mcalendar
     
     def set_pdf_name(name)
       if  name.nil? || name.empty?
-        @pdf_name = Mcalendar::DEFAULT_PDF_NAME
+        @pdf_name = Mcalendar::Config::DEFAULT_PDF_NAME
       else
         @pdf_name = name
       end

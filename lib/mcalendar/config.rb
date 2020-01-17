@@ -21,6 +21,7 @@ module Mcalendar
     }
 
     DAY_OF_WEEK = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    DEFAULT_PDF_NAME = "calendar.pdf"
   
   end
 end
