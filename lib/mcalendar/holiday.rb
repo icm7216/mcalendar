@@ -24,8 +24,8 @@ module Mcalendar
 
   ANNIVERSARY = {
     "20200224": "Ruby's Birthday",
-    "20200809": "RubyKaigi 2020 Nagano",
-    "20200810": "RubyKaigi 2020 Nagano",
-    "20200811": "RubyKaigi 2020 Nagano"
+    "20200409": "RubyKaigi 2020 Nagano",
+    "20200410": "RubyKaigi 2020 Nagano",
+    "20200411": "RubyKaigi 2020 Nagano"
   }
 end
