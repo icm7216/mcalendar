@@ -46,6 +46,7 @@ module Mcalendar
           row_color.each_with_index do |color, index|
             rows(0).columns(index).text_color = Mcalendar::Config::COLOR[color]
           end
+          column(0).map {|col| col.text_color = Mcalendar::Config::COLOR[:red]}
         end
 
         table([row_text], cell_style: {height: @cell_height / 2}) do
