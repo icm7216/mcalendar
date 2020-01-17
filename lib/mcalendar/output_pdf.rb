@@ -9,7 +9,8 @@ module Mcalendar
       Mcalendar::Config::days_information(obj_calendar)
       @pdf_days = Mcalendar::Config::days
       @calendar = @pdf_days.each_slice(7).map
-      @cell_height = @calendar.size > 5 ? 50 : 60
+      @day_height = @calendar.size > 5 ? 20 : 20
+      @text_height = @calendar.size > 5 ? 30 : 40
  
       super(page_size: 'A4', margin: 20)
       calendar_render
@@ -38,10 +39,10 @@ module Mcalendar
         row_color = c.map {|x| (x.class == Struct::ConfigDay) ? x.color : :black}
         row_text = c.map {|x| (x.class == Struct::ConfigDay) ? x.text : x}
 
-        table([row_day], cell_style: {height: @cell_height / 2}) do
+        table([row_day], cell_style: {height: @day_height}) do
           cells.style(width: 79, align: :center, size: 19)
           row(0).borders = [:top, :left, :right]
-          row(0).padding_top = 5
+          row(0).padding_top = 2
           row(0).padding_bottom = 0
           row_color.each_with_index do |color, index|
             rows(0).columns(index).text_color = Mcalendar::Config::COLOR[color]
@@ -49,11 +50,10 @@ module Mcalendar
           column(0).map {|col| col.text_color = Mcalendar::Config::COLOR[:red]}
         end
 
-        table([row_text], cell_style: {height: @cell_height / 2}) do
-          cells.style(width: 79, align: :center, size: 10)
-          row(0).style = {overflow: :shrink_to_fit}
+        table([row_text], cell_style: {height: @text_height}) do
+          cells.style(width: 79, align: :center, size: 8, overflow: :shrink_to_fit)
           row(0).borders = [:bottom, :left, :right]
-          row(0).padding_top = 1
+          row(0).padding_top = 0
           row(0).padding_bottom = 0
           row(0).padding_left = 0
           row(0).padding_right = 0

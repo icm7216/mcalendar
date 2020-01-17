@@ -32,6 +32,7 @@ module Mcalendar
       @days_config = Hash.new(nil)
       days_basic
       holiday
+      anniversary
     end
 
     def self.days_basic
@@ -50,6 +51,22 @@ module Mcalendar
         @days_config[d].day = Date.parse(d.to_s).day
         @days_config[d].text = Mcalendar::HOLIDAY[d]
         @days_config[d].color = :red
+      end
+    end
+
+    def self.anniversary
+      y = "%4d" % @first_of_month.year
+      m = "%02d" % @first_of_month.month
+      regex = /#{y}#{m}\d\d/
+  
+      Mcalendar::ANNIVERSARY.keys.grep(regex).each do |d|
+        @days_config[d].day = Date.parse(d.to_s).day
+        if @days_config[d].text.size > 1
+          @days_config[d].text += (", " + Mcalendar::ANNIVERSARY[d])
+        else
+          @days_config[d].text += Mcalendar::ANNIVERSARY[d]
+        end
+        @days_config[d].color = :black if @days_config[d].color != :red
       end
     end
 
