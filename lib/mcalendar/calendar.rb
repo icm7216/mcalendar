@@ -2,11 +2,11 @@
 module Mcalendar
 
   class Calendar
-    attr_reader :pdf_name, :month_title, :days
+    attr_reader :pdf_name, :month_title, :days, :first_of_month, :end_of_month
 
     def initialize(year, month, pdf_name)
-      first_of_month = Date.new(year, month, 1)
-      end_of_month = Date.new(year, month, -1)
+      @first_of_month = Date.new(year, month, 1)
+      @end_of_month = Date.new(year, month, -1)
       @days = (1..end_of_month.day).map {|m| "%2d" % m}
       first_of_month.wday.times {@days.unshift("  ")}
       @month_title = first_of_month.strftime("%B %Y")
