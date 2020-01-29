@@ -15,14 +15,14 @@ module Mcalendar
     
     def set_pdf_name(name)
       if  name.nil? || name.empty?
-        @pdf_name = Mcalendar::Config::DEFAULT_PDF_NAME
+        @pdf_name = Mcalendar::DEFAULT_PDF_NAME
       else
         @pdf_name = name
       end
     end
 
     def to_s
-      week_header = Mcalendar::Config::DAY_OF_WEEK.join(" ")
+      week_header = Mcalendar::DAY_OF_WEEK.join(" ")
       month_header = @month_title.center(week_header.size).rstrip
       calendar = [[week_header]]
       @days.each_slice(7) {|x| calendar << [x.join("  ")]}
