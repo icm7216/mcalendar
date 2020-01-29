@@ -1,8 +1,8 @@
 
 # Mcalendar [![Gem Version](https://badge.fury.io/rb/mcalendar.svg)](https://badge.fury.io/rb/mcalendar)
 
-Ruby monthly calendar, console and pdf.
-
+Ruby monthly calendar, console and pdf.  
+This calendar includes Japanese holidays.
 
 ## Installation
 
