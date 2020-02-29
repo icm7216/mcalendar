@@ -24,9 +24,9 @@ module Mcalendar
 
     ANNIVERSARY = {
       "20200224": "Rubyの誕生日",
-      "20200409": "RubyKaigi 2020 Nagano",
-      "20200410": "RubyKaigi 2020 Nagano",
-      "20200411": "RubyKaigi 2020 Nagano",
+      "20200903": "RubyKaigi 2020 Nagano",
+      "20200904": "RubyKaigi 2020 Nagano",
+      "20200905": "RubyKaigi 2020 Nagano",
     }.freeze
   end
 
@@ -55,9 +55,9 @@ module Mcalendar
 
     ANNIVERSARY = {
       "20200224": "Ruby's Birthday",
-      "20200409": "RubyKaigi 2020 Nagano",
-      "20200410": "RubyKaigi 2020 Nagano",
-      "20200411": "RubyKaigi 2020 Nagano",
+      "20200903": "RubyKaigi 2020 Nagano",
+      "20200904": "RubyKaigi 2020 Nagano",
+      "20200905": "RubyKaigi 2020 Nagano",
     }.freeze
   end
 end
