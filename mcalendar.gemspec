@@ -21,6 +21,9 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_runtime_dependency "prawn"
+  spec.add_runtime_dependency "prawn-table"
+
   spec.add_development_dependency "test-unit"
   spec.add_development_dependency "test-unit-rr"
   spec.add_development_dependency "prawn"
