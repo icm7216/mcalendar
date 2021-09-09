@@ -28,4 +28,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "test-unit-rr"
   spec.add_development_dependency "prawn"
   spec.add_development_dependency "prawn-table"
+  spec.add_development_dependency "rake"
 end
