@@ -20,13 +20,13 @@ module Mcalendar
       calendar = Mcalendar::Calendar.new(date.year, date.month, pdf_name)
 
       # output calendar
-      calendar.display if console
-      calendar.pdf if pdf
+      calendar.output_console if console
+      calendar.output_pdf if pdf
 
       # both outputs if no options
       if console.nil? && pdf.nil? && version.nil?
-        calendar.display
-        calendar.pdf
+        calendar.output_console
+        calendar.output_pdf
       end
     end
   end
