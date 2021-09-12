@@ -9,6 +9,14 @@ module Mcalendar
     def initialize(argv)
       @argv = argv
     end
+    
+    def output_console
+      puts @calendar.to_s
+    end
+
+    def output_pdf
+      @outputpdf.render_file(@calendar.pdf_filename)
+    end
 
     def execute
       options = Mcalendar::Options.parse(@argv)
@@ -17,16 +25,20 @@ module Mcalendar
       pdf = options[:opt][:pdf]
       pdf_name = options[:opt][:name]
       version = options[:opt][:version]
-      calendar = Mcalendar::Calendar.new(date.year, date.month, pdf_name)
+      @calendar = Mcalendar::Calendar.new(date.year, date.month, pdf_name)
+      @outputpdf = Mcalendar::OutputPdf.new(@calendar)
 
       # output calendar
-      calendar.output_console if console
-      calendar.output_pdf if pdf
+      # calendar.output_console if console
+      # calendar.output_pdf if pdf
+      output_console if console
+      output_pdf if pdf
+
 
       # both outputs if no options
       if console.nil? && pdf.nil? && version.nil?
-        calendar.output_console
-        calendar.output_pdf
+        output_console
+        output_pdf
       end
     end
   end
