@@ -7,7 +7,6 @@ module Mcalendar
       @year = year
       @month = month
       @pdfname = pdfname
-      @outputpdf = Mcalendar::OutputPdf.new(self)
     end
     
     def first_of_month
@@ -42,14 +41,6 @@ module Mcalendar
       calendar = [[week_header]]
       days.each_slice(7) {|x| calendar << [x.join("  ")]}
       [month_header, calendar]
-    end
-        
-    def output_console
-      puts to_s
-    end
-
-    def output_pdf
-      @outputpdf.render_file(pdf_filename)
     end
 
   end
