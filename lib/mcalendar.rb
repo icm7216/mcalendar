@@ -2,6 +2,7 @@ require 'date'
 require "prawn"
 require "prawn/table"
 require "optparse"
+require 'forwardable'
 
 require_relative 'mcalendar/calendar'
 require_relative 'mcalendar/command'
