@@ -3,10 +3,9 @@ module Mcalendar
 
   class Calendar
 
-    def initialize(year, month, pdfname)
+    def initialize(year, month)
       @year = year
       @month = month
-      @pdfname = pdfname
     end
     
     def first_of_month
@@ -25,14 +24,6 @@ module Mcalendar
 
     def month_title
       first_of_month.strftime("%B %Y")
-    end
-
-    def pdf_filename
-      if  @pdfname.nil? || @pdfname.empty?
-        Mcalendar::DEFAULT_PDF_NAME
-      else
-        @pdfname
-      end
     end
 
     def to_s

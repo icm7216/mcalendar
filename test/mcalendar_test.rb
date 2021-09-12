@@ -7,7 +7,7 @@ class McalendarTest < Test::Unit::TestCase
   
     setup do
       d = Date.parse("2020/01")      
-      @calendar = Mcalendar::Calendar.new(d.year, d.month, "2020/01")
+      @calendar = Mcalendar::Calendar.new(d.year, d.month)
     end
   
     test '#calendar at 2020/01' do

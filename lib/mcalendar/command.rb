@@ -15,7 +15,15 @@ module Mcalendar
     end
 
     def output_pdf
-      @outputpdf.render_file(@calendar.pdf_filename)
+      @outputpdf.render_file(pdf_filename)
+    end
+
+    def pdf_filename
+      if  @pdf_name.nil? || @pdf_name.empty?
+        Mcalendar::DEFAULT_PDF_NAME
+      else
+        @pdf_name = name.downcase.end_with?(".pdf")? @pdf_name : @pdf_name + ".pdf"
+      end
     end
 
     def execute
@@ -23,9 +31,9 @@ module Mcalendar
       date = options[:date]
       console = options[:opt][:console]
       pdf = options[:opt][:pdf]
-      pdf_name = options[:opt][:name]
+      @pdf_name = options[:opt][:name]
       version = options[:opt][:version]
-      @calendar = Mcalendar::Calendar.new(date.year, date.month, pdf_name)
+      @calendar = Mcalendar::Calendar.new(date.year, date.month)
       @outputpdf = Mcalendar::OutputPdf.new(@calendar)
 
       # output calendar
