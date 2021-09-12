@@ -1,19 +1,17 @@
 module Mcalendar
   class OutputPdf < Prawn::Document
-    include Mcalendar::Config
+    extend Forwardable
+    def_delegator :@calendar, :month_title
 
-    def initialize(obj_calendar)
-      @first_of_month = obj_calendar.first_of_month
-      @end_of_month = obj_calendar.end_of_month
-      @month_header = [[obj_calendar.month_title]]
+    def initialize(calendar)
+      @calendar = calendar
+      @month_header = [[month_title]]
       @day_of_week = [Mcalendar::DAY_OF_WEEK] 
-      
-      @pdf_days = []
-      days_information
-      @pdf_days = days
-      @calendar = @pdf_days.each_slice(7).map
-      @day_height = @calendar.size > 5 ? 20 : 20
-      @text_height = @calendar.size > 5 ? 30 : 40
+
+      schedule = Mcalendar::Schedule.new(calendar)
+      @weekly_schedule = schedule.daily_schedule.each_slice(7).map
+      @day_height = @weekly_schedule.size > 5 ? 20 : 20
+      @text_height = @weekly_schedule.size > 5 ? 30 : 40
  
       super(page_size: 'A4', margin: 20)
       calendar_render
@@ -36,8 +34,8 @@ module Mcalendar
       end
     end
 
-    def day_content
-      @calendar.each do |c|
+    def days_schedule
+      @weekly_schedule.each do |c|
         row_day = c.map {|x| (x.class == Struct::ConfigDay) ? x.day : x}
         row_color = c.map {|x| (x.class == Struct::ConfigDay) ? x.day_color : :black}
         row_text = c.map do |x|
@@ -80,7 +78,7 @@ module Mcalendar
         stroke_bounds
         month_header
         week_header
-        day_content
+        days_schedule
       end
     end
 
