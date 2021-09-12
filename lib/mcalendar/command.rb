@@ -22,7 +22,7 @@ module Mcalendar
       if  @pdf_name.nil? || @pdf_name.empty?
         Mcalendar::DEFAULT_PDF_NAME
       else
-        @pdf_name = name.downcase.end_with?(".pdf")? @pdf_name : @pdf_name + ".pdf"
+        @pdf_name = @pdf_name.downcase.end_with?(".pdf")? @pdf_name : @pdf_name + ".pdf"
       end
     end
 
