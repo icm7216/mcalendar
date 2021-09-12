@@ -29,8 +29,6 @@ module Mcalendar
       @outputpdf = Mcalendar::OutputPdf.new(@calendar)
 
       # output calendar
-      # calendar.output_console if console
-      # calendar.output_pdf if pdf
       output_console if console
       output_pdf if pdf
 
