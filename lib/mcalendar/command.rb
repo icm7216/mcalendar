@@ -40,12 +40,12 @@ module Mcalendar
       output_console if console
       output_pdf if pdf
 
-
       # both outputs if no options
       if console.nil? && pdf.nil? && version.nil?
         output_console
         output_pdf
       end
+      
     end
   end
 end
