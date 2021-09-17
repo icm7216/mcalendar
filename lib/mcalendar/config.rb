@@ -22,4 +22,6 @@ module Mcalendar
   DAY_OF_WEEK = %w[Sun Mon Tue Wed Thu Fri Sat].freeze
   DEFAULT_PDF_NAME = "calendar.pdf".freeze
 
+  DEFAULT_CONFIG_FILE = "mcalendar.yml".freeze
+
 end

@@ -1,17 +1,55 @@
 module Mcalendar
-  module Options
-    def self.parse(argv)
-      options = {}
+  class Options
+
+    def initialize
+      @options = {
+        :holiday => nil, 
+        :anniversary => nil
+      }
+
+      config_file = Mcalendar::DEFAULT_CONFIG_FILE
+      load_config(config_file) if File.exist?(config_file)
+    end
+
+    def hash_key_to_sym(h)
+      Hash[h.map{|k, v| [k.to_s.to_sym, v]}]
+    end
+
+    def load_config(file)
+      @config = YAML.load(File.read(file))
+      holidays_schedule
+      anniversaries_schedule
+    end
+
+    def holidays_schedule
+      @options[:holiday] = hash_key_to_sym(@config["holiday"]) if @config["holiday"]
+    end
+
+    def anniversaries_schedule
+      @options[:anniversary] = hash_key_to_sym(@config["anniversary"]) if @config["anniversary"]
+    end
+
+    def parse(argv)
+      # options = {}
 
       parser = OptionParser.new do |o|
         o.on_head("-v", "--version", "Show version") do |v|
-          options[:version] = v
+          @options[:version] = v
           o.version = Mcalendar::VERSION
           puts o.version
         end
-        o.on("-p", "--pdf", "output pdf") { |v| options[:pdf] = v }
-        o.on("-n NAME", "--name=NAME", String, "output pdf name") { |v| options[:name] = v }
-        o.on("-c", "--console", "output console") { |v| options[:console] = v }
+
+        o.on("-p", "--pdf", "output pdf") { |v| @options[:pdf] = v }
+        
+        o.on("-n NAME", "--name=NAME", String, "output pdf name") { |v| @options[:name] = v }
+        
+        o.on("-c", "--console", "output console") { |v| @options[:console] = v }
+        
+        o.on("-f FILE", "--config=FILE", "Use YAML format file.") do |file|
+          load_config(file) if file and File.exist?(file)
+        end
+
+        o.on("-y", "--holidays", "Display holidays and anniversaries in YAML file") { |v| @options[:holidays] = v }
       end
 
       begin
@@ -21,17 +59,18 @@ module Mcalendar
       rescue OptionParser::MissingArgument => e
         case e.args
         when ["-n"], ["--name"]
-          options[:name] = Mcalendar::DEFAULT_PDF_NAME
+          @options[:name] = Mcalendar::DEFAULT_PDF_NAME
         end
       end
 
       begin
-        d = Date.parse(remained.first)
+        @options[:date] = Date.parse(remained.first)
       rescue
-        d = Date.today
+        @options[:date] = Date.today
       end
 
-      { date: d, opt: options }
+      @options
     end
+
   end
 end
