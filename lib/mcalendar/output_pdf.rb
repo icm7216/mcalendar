@@ -3,13 +3,15 @@ module Mcalendar
     extend Forwardable
     def_delegator :@calendar, :month_title
 
-    def initialize(calendar)
+    def initialize(calendar, schedule)
       @calendar = calendar
+      @schedule = schedule
+      
       @month_header = [[month_title]]
       @day_of_week = [Mcalendar::DAY_OF_WEEK] 
 
-      schedule = Mcalendar::Schedule.new(calendar)
-      @weekly_schedule = schedule.daily_schedule.each_slice(7).map
+    
+      @weekly_schedule = @schedule.daily_schedule.each_slice(7).map
       @day_height = @weekly_schedule.size > 5 ? 20 : 20
       @text_height = @weekly_schedule.size > 5 ? 30 : 40
  

@@ -3,6 +3,7 @@ require "prawn"
 require "prawn/table"
 require "optparse"
 require 'forwardable'
+require "yaml"
 
 require_relative 'mcalendar/calendar'
 require_relative 'mcalendar/command'

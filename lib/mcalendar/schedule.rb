@@ -12,23 +12,28 @@ module Mcalendar
       :anniversary_text
     )
 
-    def initialize(calendar)
+    def initialize(calendar, config_schedule)
       @calendar = calendar
+      @config_schedule = config_schedule
       @days_config = Hash.new(nil)
+      @holidays = @config_schedule[:holiday]
+      @anniversaries = @config_schedule[:anniversary]
       
       setup_schedule
     end
 
+    def show_holidays
+      @holidays.map{|k,v| "#{k}: #{v}"}
+    end
+
+    def show_anniversaries
+      @anniversaries.map{|k,v| "#{k}: #{v}"}
+    end
+
     def setup_schedule
-      holiday_description_language
       days_basic
       holidays_in_the_month
       anniversaries_in_the_month
-    end
-
-    def holiday_description_language
-      Mcalendar.const_set(:HOLIDAY, Mcalendar::EN::HOLIDAY)
-      Mcalendar.const_set(:ANNIVERSARY, Mcalendar::EN::ANNIVERSARY)
     end
 
     def days_basic
@@ -45,10 +50,10 @@ module Mcalendar
       m = format("%02d", first_of_month.month)
       regex = /#{y}#{m}\d\d/
 
-      Mcalendar::HOLIDAY.keys.grep(regex).each do |d|
+      @holidays.keys.grep(regex).each do |d|
         @days_config[d].day = Date.parse(d.to_s).day
         @days_config[d].day_color = :red
-        @days_config[d].holiday_text = Mcalendar::HOLIDAY[d]
+        @days_config[d].holiday_text = @holidays[d]
       end
       
       @days_config
@@ -59,9 +64,9 @@ module Mcalendar
       m = format("%02d", first_of_month.month)
       regex = /#{y}#{m}\d\d/
 
-      Mcalendar::ANNIVERSARY.keys.grep(regex).each do |d|
+      @anniversaries.keys.grep(regex).each do |d|
         @days_config[d].day = Date.parse(d.to_s).day
-        @days_config[d].anniversary_text = Mcalendar::ANNIVERSARY[d]
+        @days_config[d].anniversary_text = @anniversaries[d]
       end
 
       @days_config

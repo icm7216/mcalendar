@@ -18,6 +18,13 @@ module Mcalendar
       @outputpdf.render_file(pdf_filename)
     end
 
+    def output_holidays
+      puts "=========== Holidays ==========="
+      puts @schedule.show_holidays
+      puts "======== Anniversaries ========="
+      puts @schedule.show_anniversaries
+    end
+
     def pdf_filename
       if  @pdf_name.nil? || @pdf_name.empty?
         Mcalendar::DEFAULT_PDF_NAME
@@ -27,21 +34,25 @@ module Mcalendar
     end
 
     def execute
-      options = Mcalendar::Options.parse(@argv)
+      options = Mcalendar::Options.new.parse(@argv)
       date = options[:date]
-      console = options[:opt][:console]
-      pdf = options[:opt][:pdf]
-      @pdf_name = options[:opt][:name]
-      version = options[:opt][:version]
+      console = options[:console]
+      pdf = options[:pdf]
+      @pdf_name = options[:name]
+      version = options[:version]
+      holidays = options[:holidays]
+
       @calendar = Mcalendar::Calendar.new(date.year, date.month)
-      @outputpdf = Mcalendar::OutputPdf.new(@calendar)
+      @schedule = Mcalendar::Schedule.new(@calendar, options)
+      @outputpdf = Mcalendar::OutputPdf.new(@calendar, @schedule)
 
       # output calendar
       output_console if console
       output_pdf if pdf
+      output_holidays if holidays
 
       # both outputs if no options
-      if console.nil? && pdf.nil? && version.nil?
+      if console.nil? && pdf.nil? && version.nil? && holidays.nil?
         output_console
         output_pdf
       end
