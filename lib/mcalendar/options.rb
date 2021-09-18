@@ -3,12 +3,18 @@ module Mcalendar
 
     def initialize
       @options = {
-        :holiday => nil, 
-        :anniversary => nil
+        :holiday => {}, 
+        :anniversary => {}
       }
 
-      config_file = Mcalendar::DEFAULT_CONFIG_FILE
-      load_config(config_file) if File.exist?(config_file)
+      # If mcalendar.yml is not found, load the built-in mcalendar.yml.
+      if File.exist?(Mcalendar::DEFAULT_CONFIG_FILE)
+        load_config(Mcalendar::DEFAULT_CONFIG_FILE)
+      else
+        config_file = File.expand_path("../../mcalendar.yml",__dir__)
+        load_config(config_file)
+      end
+
     end
 
     def hash_key_to_sym(h)
@@ -30,8 +36,6 @@ module Mcalendar
     end
 
     def parse(argv)
-      # options = {}
-
       parser = OptionParser.new do |o|
         o.on_head("-v", "--version", "Show version") do |v|
           @options[:version] = v
