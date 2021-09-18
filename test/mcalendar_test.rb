@@ -67,7 +67,7 @@ class McalendarTest < Test::Unit::TestCase
       args = ['']
       expected = {
         :date => d,
-        :holiday => nil,
+        :holiday => {},
         :anniversary => {:"20210224"=>"Ruby's Birthday"}
       }
       assert_equal expected, Mcalendar::Options.new.parse(args)
@@ -79,7 +79,7 @@ class McalendarTest < Test::Unit::TestCase
       expected = {
         :date => d,
         :console=>true,
-        :holiday => nil,
+        :holiday => {},
         :anniversary => {:"20210224"=>"Ruby's Birthday"}
       }
       assert_equal expected, Mcalendar::Options.new.parse(args)
