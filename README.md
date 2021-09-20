@@ -74,7 +74,7 @@ mcalendar 2021/02 -n my_calendar.pdf
 
 ### Configure mcalendar schedule
 
-mcalendar reads mcalendar.yml in the current working directory as mcalendar's schedule file. It can contain the following settings:
+mcalendar reads `~/.mcalendar.yml` or `mcalendar.yml` in the current working directory as mcalendar's schedule file. It can contain the following settings:
 * holiday
 * anniversary
 
