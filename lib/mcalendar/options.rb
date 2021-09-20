@@ -7,13 +7,16 @@ module Mcalendar
         :anniversary => {}
       }
 
-      # If mcalendar.yml is not found, load the built-in mcalendar.yml.
+      # If mcalendar.yml or ~/.mcalendar.yml is not found, load the built-in mcalendar.yml.
       if File.exist?(Mcalendar::DEFAULT_CONFIG_FILE)
-        load_config(Mcalendar::DEFAULT_CONFIG_FILE)
+        config_yaml = Mcalendar::DEFAULT_CONFIG_FILE
+      elsif File.exist?(Mcalendar::GLOBAL_CONFIG_FILE)
+        config_yaml = Mcalendar::GLOBAL_CONFIG_FILE
       else
-        config_file = File.expand_path("../../mcalendar.yml",__dir__)
-        load_config(config_file)
+        config_yaml = Mcalendar::BUILT_IN_CONFIG_FILE
       end
+
+      load_config(config_yaml)
 
     end
 

@@ -23,5 +23,6 @@ module Mcalendar
   DEFAULT_PDF_NAME = "calendar.pdf".freeze
 
   DEFAULT_CONFIG_FILE = "mcalendar.yml".freeze
-
+  GLOBAL_CONFIG_FILE = "~/.mcalendar.yml".freeze
+  BUILT_IN_CONFIG_FILE = File.expand_path("../../mcalendar.yml", __dir__).freeze
 end
