@@ -1,4 +1,9 @@
+# Japanese holidays in English
+# https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html
+# 2021 -> 2022
+
 holiday:
+# 2021
   20210101: New Year's Day
   20210111: Coming-of-age Day
   20210211: National Foundation Day
@@ -16,10 +21,32 @@ holiday:
   20210923: Autumnal Equinox Day
   20211103: Culture Day
   20211123: Labour Thanksgiving Day
+# 2022
+  20220101: New Year's Day
+  20220110: Coming-of-age Day
+  20220211: National Foundation Day
+  20220223: Emperor's Birthday
+  20220321: Vernal Equinox Day
+  20220429: Showa Day
+  20220503: Constitution Memorial Day
+  20220504: Greenery Day
+  20220505: Children's Day
+  20220718: Marine Day
+  20220811: Mountain Day
+  20220919: Respect for the Aged Day
+  20220923: Autumnal Equinox Day
+  20221010: Sports Day
+  20221103: Culture Day
+  20221123: Labour Thanksgiving Day
 
 anniversary:
+# 2021
   20210224: Ruby's Birthday
   20210909: RubyKaigi Takeout 2021
   20210910: RubyKaigi Takeout 2021
   20210911: RubyKaigi Takeout 2021
-
+# 2022
+  20220224: Ruby's Birthday
+  # 2022xxxx: RubyKaigi
+  # 2022xxxx: RubyKaigi
+  # 2022xxxx: RubyKaigi
