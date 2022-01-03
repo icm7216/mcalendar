@@ -24,16 +24,17 @@ class McalendarTest < Test::Unit::TestCase
   sub_test_case 'Console output schedule' do
   
     setup do
+      my_date = Date.parse("2021/02/01") 
       config_schedule = {
         :holiday => {
           :"20210201" => "Day 01",
           :"20210202" => "Day 02",
           :"20210203" => "Day 03",
         },
-        :anniversary => {:"20210224"=>"Ruby's Birthday"}
+        :anniversary => {:"20210224"=>"Ruby's Birthday"},
+        :date => my_date 
       }
-      d = Date.parse("2021/02")      
-      calendar = Mcalendar::Calendar.new(d.year, d.month)
+      calendar = Mcalendar::Calendar.new(my_date.year, my_date.month)
       @schedule = Mcalendar::Schedule.new(calendar, config_schedule)
     end
   

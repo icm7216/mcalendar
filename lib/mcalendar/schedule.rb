@@ -18,16 +18,24 @@ module Mcalendar
       @days_config = Hash.new(nil)
       @holidays = @config_schedule[:holiday]
       @anniversaries = @config_schedule[:anniversary]
+      @date = @config_schedule[:date]
       
       setup_schedule
     end
 
+    def holidays_in_the_year(holidays)
+      holidays.map do |k,v|
+        year_of_key = Date.parse(k.to_s).year
+        "#{k}: #{v}" if year_of_key == Date.parse(@date.to_s).year
+      end.compact
+    end
+
     def show_holidays
-      @holidays.map{|k,v| "#{k}: #{v}"}
+      holidays_in_the_year(@holidays)
     end
 
     def show_anniversaries
-      @anniversaries.map{|k,v| "#{k}: #{v}"}
+      holidays_in_the_year(@anniversaries)
     end
 
     def setup_schedule
