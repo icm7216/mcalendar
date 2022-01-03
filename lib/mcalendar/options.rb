@@ -61,8 +61,6 @@ module Mcalendar
 
       begin
         remained = parser.parse!(argv)
-      # rescue OptionParser::InvalidArgument => e
-      #   abort e.message
       rescue OptionParser::MissingArgument => e
         case e.args
         when ["-n"], ["--name"]
