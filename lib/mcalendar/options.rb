@@ -61,13 +61,16 @@ module Mcalendar
 
       begin
         remained = parser.parse!(argv)
-      rescue OptionParser::InvalidArgument => e
-        abort e.message
+      # rescue OptionParser::InvalidArgument => e
+      #   abort e.message
       rescue OptionParser::MissingArgument => e
         case e.args
         when ["-n"], ["--name"]
           @options[:name] = Mcalendar::DEFAULT_PDF_NAME
         end
+      rescue OptionParser::ParseError => e
+        puts parser
+        abort e.message
       end
 
       begin
