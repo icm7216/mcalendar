@@ -26,11 +26,31 @@ module Mcalendar
       first_of_month.strftime("%B %Y")
     end
 
+    def this_month_calendar?
+      (Date.today.year == @year) && (Date.today.month == @month) 
+    end
+
+    def reverse_color(day_str)
+      "\e[7m" + day_str.to_s + "\e[0m"
+    end
+
+    def reverse_todays_date
+      today_str = format("%2s", Date.today.day.to_s)
+    
+      if this_month_calendar?
+        month_days = days.map {|x| x.sub(today_str, reverse_color(today_str))}
+      else
+        month_days = days
+      end
+
+      month_days
+    end
+
     def to_s
       week_header = Mcalendar::DAY_OF_WEEK.join(" ")
       month_header = month_title.center(week_header.size).rstrip
       calendar = [[week_header]]
-      days.each_slice(7) {|x| calendar << [x.join("  ")]}
+      reverse_todays_date.each_slice(7) {|x| calendar << [x.join("  ")]}
       [month_header, calendar]
     end
 

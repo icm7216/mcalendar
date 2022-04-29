@@ -21,6 +21,25 @@ class McalendarTest < Test::Unit::TestCase
     end
   end
 
+  sub_test_case 'Console output today' do
+  
+    setup do
+      d = Date.parse("2020/01/01")
+      stub(Date).today {d}
+      @calendar = Mcalendar::Calendar.new(d.year, d.month)
+    end
+  
+    test 'Calendar in 2020/01' do
+      assert_equal ["       January 2020", 
+        [["Sun Mon Tue Wed Thu Fri Sat"], 
+        ["            \e[7m 1\e[0m   2   3   4"], 
+        [" 5   6   7   8   9  10  11"], 
+        ["12  13  14  15  16  17  18"], 
+        ["19  20  21  22  23  24  25"], 
+        ["26  27  28  29  30  31"]]], @calendar.to_s
+    end
+  end
+
   sub_test_case 'Console output schedule' do
   
     setup do
