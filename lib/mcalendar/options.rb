@@ -57,6 +57,8 @@ module Mcalendar
         end
 
         o.on("-y", "--holidays", "Display holidays and anniversaries in YAML file") { |v| @options[:holidays] = v }
+
+        o.on("-w", "--wday", "Number of days for each day of the week in this month") { |v| @options[:wday] = v }
       end
 
       begin
