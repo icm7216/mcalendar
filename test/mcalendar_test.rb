@@ -72,6 +72,27 @@ class McalendarTest < Test::Unit::TestCase
     end
   end
 
+  # Number of days for each day of the week in this month
+  sub_test_case 'Console output, Number of days for each day of the week' do
+  
+    setup do    
+      @mc = Mcalendar::Command.new(["2022/08"])
+    end
+  
+    test 'Number of days for each day of the week in 2022/08' do
+      expected = {
+        :sun=>[      " 7", "14", "21", "28"], 
+        :mon=>[" 1", " 8", "15", "22", "29"], 
+        :tue=>[" 2", " 9", "16", "23", "30"], 
+        :wed=>[" 3", "10", "17", "24", "31"], 
+        :thu=>[" 4", "11", "18", "25"], 
+        :fri=>[" 5", "12", "19", "26"], 
+        :sat=>[" 6", "13", "20", "27"]
+      }
+      assert_equal expected, @mc.day_of_weeks
+    end
+  end
+
   sub_test_case 'Option parser' do
 
     setup do
