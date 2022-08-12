@@ -31,7 +31,6 @@ module Mcalendar
       wvalues = day_of_weeks.values
 
       puts "\nNumber of days for each day of the week in #{@date.strftime("%B %Y")}"
-            Number of days for each day of the week in September 2022
       puts "------------------------------------------------------------"
       wdays.each_with_index do |wday, idx|
         puts "#{wday} #{wvalues[idx].size} days. => #{wvalues[idx].join(",")}"
