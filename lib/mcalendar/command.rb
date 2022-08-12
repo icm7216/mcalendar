@@ -18,7 +18,7 @@ module Mcalendar
       @holidays = options[:holidays]
       @calendar = Mcalendar::Calendar.new(@date.year, @date.month)
       @schedule = Mcalendar::Schedule.new(@calendar, options)
-      @outputpdf = Mcalendar::OutputPdf.new(@calendar, @schedule)
+      @wday = options[:wday]
     end
     
     def output_console
@@ -30,9 +30,8 @@ module Mcalendar
       wdays = Mcalendar::DAY_OF_WEEK.map {|w| w.capitalize + "."}
       wvalues = day_of_weeks.values
 
-      puts "Number of days for each day of the week in this month."
-      puts "year: #{@date.year}, month: #{@date.month}"
-      puts "------------------------------------------------------"
+      puts "\nNumber of days for each day of the week in #{@date.strftime("%B %Y")}"
+      puts "-----------------------------------------------------------------------"
       wdays.each_with_index do |wday, idx|
         puts "#{wday} #{wvalues[idx].size} days. => #{wvalues[idx].join(",")}"
       end
@@ -53,7 +52,8 @@ module Mcalendar
     end
 
     def output_pdf
-      @outputpdf.render_file(pdf_filename)
+      outputpdf = Mcalendar::OutputPdf.new(@calendar, @schedule)
+      outputpdf.render_file(pdf_filename)
     end
 
     def output_holidays
@@ -72,28 +72,19 @@ module Mcalendar
     end
 
     def execute
-      # options = Mcalendar::Options.new.parse(@argv)
-      # date = options[:date]
-      # console = options[:console]
-      # pdf = options[:pdf]
-      # @pdf_name = options[:name]
-      # version = options[:version]
-      # holidays = options[:holidays]
-
-      # @calendar = Mcalendar::Calendar.new(date.year, date.month)
-      # @schedule = Mcalendar::Schedule.new(@calendar, options)
-      # @outputpdf = Mcalendar::OutputPdf.new(@calendar, @schedule)
-
       # output calendar
       output_console if @console
       output_pdf if @pdf
       output_holidays if @holidays
 
       # both outputs if no options
-      if @console.nil? && @pdf.nil? && @version.nil? && @holidays.nil?
+      if @console.nil? && @pdf.nil? && @version.nil? && @holidays.nil? && @wday.nil?
         output_console
         output_pdf
       end
+
+      # Number of days for each day of the week in this month.
+      how_many_days if @wday
       
     end
   end
