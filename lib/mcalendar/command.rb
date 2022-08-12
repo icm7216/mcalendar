@@ -7,11 +7,49 @@ module Mcalendar
     end
 
     def initialize(argv)
-      @argv = argv
+      # @argv = argv
+      options = Mcalendar::Options.new.parse(argv)
+      @date = options[:date]
+ 
+      @console = options[:console]
+      @pdf = options[:pdf]
+      @pdf_name = options[:name]
+      @version = options[:version]
+      @holidays = options[:holidays]
+      @calendar = Mcalendar::Calendar.new(@date.year, @date.month)
+      @schedule = Mcalendar::Schedule.new(@calendar, options)
+      @outputpdf = Mcalendar::OutputPdf.new(@calendar, @schedule)
     end
     
     def output_console
       puts @calendar.to_s
+    end
+
+    # Number of days for each day of the week in this month.
+    def how_many_days
+      wdays = Mcalendar::DAY_OF_WEEK.map {|w| w.capitalize + "."}
+      wvalues = day_of_weeks.values
+
+      puts "Number of days for each day of the week in this month."
+      puts "year: #{@date.year}, month: #{@date.month}"
+      puts "------------------------------------------------------"
+      wdays.each_with_index do |wday, idx|
+        puts "#{wday} #{wvalues[idx].size} days. => #{wvalues[idx].join(",")}"
+      end
+      
+    end
+
+    def day_of_weeks
+      wks = @calendar.days.each_slice(7).map(&:to_a)     
+      keys = Mcalendar::DAY_OF_WEEK.map(&:downcase).map(&:to_sym)
+
+      vals = (0..6).map do |wd|
+        w = wks.map {|wk| wk[wd]}
+        w.delete("  ")
+        w.compact
+      end
+           
+      Hash[keys.zip(vals)]
     end
 
     def output_pdf
@@ -34,25 +72,25 @@ module Mcalendar
     end
 
     def execute
-      options = Mcalendar::Options.new.parse(@argv)
-      date = options[:date]
-      console = options[:console]
-      pdf = options[:pdf]
-      @pdf_name = options[:name]
-      version = options[:version]
-      holidays = options[:holidays]
+      # options = Mcalendar::Options.new.parse(@argv)
+      # date = options[:date]
+      # console = options[:console]
+      # pdf = options[:pdf]
+      # @pdf_name = options[:name]
+      # version = options[:version]
+      # holidays = options[:holidays]
 
-      @calendar = Mcalendar::Calendar.new(date.year, date.month)
-      @schedule = Mcalendar::Schedule.new(@calendar, options)
-      @outputpdf = Mcalendar::OutputPdf.new(@calendar, @schedule)
+      # @calendar = Mcalendar::Calendar.new(date.year, date.month)
+      # @schedule = Mcalendar::Schedule.new(@calendar, options)
+      # @outputpdf = Mcalendar::OutputPdf.new(@calendar, @schedule)
 
       # output calendar
-      output_console if console
-      output_pdf if pdf
-      output_holidays if holidays
+      output_console if @console
+      output_pdf if @pdf
+      output_holidays if @holidays
 
       # both outputs if no options
-      if console.nil? && pdf.nil? && version.nil? && holidays.nil?
+      if @console.nil? && @pdf.nil? && @version.nil? && @holidays.nil?
         output_console
         output_pdf
       end
