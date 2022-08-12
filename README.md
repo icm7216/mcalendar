@@ -142,8 +142,24 @@ You can also use the command option `-f` or `--config=` to load your own `your_s
 >mcalendar -f your_schedule.yml
 ```
 
+How many Sundays are there this month? 
+Use the command option `-w`, You can easily know this answer.
+```
+>mcalendar -w
 
-show help
+Number of days for each day of the week in August 2022
+-----------------------------------------------------------------------
+Sun. 4 days. =>  7,14,21,28
+Mon. 5 days. =>  1, 8,15,22,29
+Tue. 5 days. =>  2, 9,16,23,30
+Wed. 5 days. =>  3,10,17,24,31
+Thu. 4 days. =>  4,11,18,25
+Fri. 4 days. =>  5,12,19,26
+Sat. 4 days. =>  6,13,20,27
+```
+
+
+Show help
 ```
 >mcalendar --help
 Usage: mcalendar [options]
@@ -153,6 +169,7 @@ Usage: mcalendar [options]
     -c, --console                    output console
     -f, --config=FILE                Use YAML format file.
     -y, --holidays                   Display holidays and anniversaries in YAML file
+    -w, --wday                       Number of days for each day of the week in this month
 ```
 
 ## License
