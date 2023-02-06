@@ -38,6 +38,46 @@ holiday:
   20221010: Sports Day
   20221103: Culture Day
   20221123: Labour Thanksgiving Day
+# 2023
+  20230101: New Year's Day
+  20230102: Substitute Holiday
+  20230109: Coming-of-age Day
+  20230211: National Foundation Day
+  20230223: Emperor's Birthday
+  20230321: Vernal Equinox Day
+  20230429: Showa Day
+  20230503: Constitution Memorial Day
+  20230504: Greenery Day
+  20230505: Children's Day
+  20230717: Marine Day
+  20230811: Mountain Day
+  20230918: Respect for the Aged Day
+  20230923: Autumnal Equinox Day
+  20231009: Sports Day
+  20231103: Culture Day
+  20231123: Labour Thanksgiving Day
+# 2024
+  20240101: New Year's Day
+  20240108: Coming-of-age Day
+  20240211: National Foundation Day
+  20240212: Substitute Holiday
+  20240223: Emperor's Birthday
+  20240320: Vernal Equinox Day
+  20240429: Showa Day
+  20240503: Constitution Memorial Day
+  20240504: Greenery Day
+  20240505: Children's Day
+  20240506: Substitute Holiday
+  20240715: Marine Day
+  20240811: Mountain Day
+  20240812: Substitute Holiday
+  20240916: Respect for the Aged Day
+  20240922: Autumnal Equinox Day
+  20240923: Substitute Holiday
+  20241014: Sports Day
+  20241103: Culture Day
+  20241104: Substitute Holiday
+  20241123: Labour Thanksgiving Day
 
 anniversary:
 # 2021
@@ -50,3 +90,13 @@ anniversary:
   20220908: RubyKaigi 2022 
   20220909: RubyKaigi 2022
   20220910: RubyKaigi 2022
+# 2023
+  20230224: Ruby's Birthday
+  20230511: RubyKaigi 2023 
+  20230512: RubyKaigi 2023
+  20230513: RubyKaigi 2023
+# 2024
+  20240224: Ruby's Birthday
+# 2024xxxx: RubyKaigi 2024 
+# 2024xxxx: RubyKaigi 2024
+# 2024xxxx: RubyKaigi 2024
