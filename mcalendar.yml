@@ -78,6 +78,45 @@ holiday:
   20241103: Culture Day
   20241104: Substitute Holiday
   20241123: Labour Thanksgiving Day
+# 2025
+  20250101: New Year's Day
+  20250113: Coming-of-age Day
+  20250211: National Foundation Day
+  20250223: Emperor's Birthday
+  20250224: Substitute Holiday
+  20250320: Vernal Equinox Day
+  20250429: Showa Day
+  20250503: Constitution Memorial Day
+  20250504: Greenery Day
+  20250505: Children's Day
+  20250506: Substitute Holiday
+  20250721: Marine Day
+  20250811: Mountain Day
+  20250915: Respect for the Aged Day
+  20250923: Autumnal Equinox Day
+  20251013: Sports Day
+  20251103: Culture Day
+  20251123: Labour Thanksgiving Day
+  20251124: Substitute Holiday
+# 2026
+  20260101: New Year's Day
+  20260112: Coming-of-age Day
+  20260211: National Foundation Day
+  20260223: Emperor's Birthday
+  20260320: Vernal Equinox Day
+  20260429: Showa Day
+  20260503: Constitution Memorial Day
+  20260504: Greenery Day
+  20260505: Children's Day
+  20260506: Substitute Holiday
+  20260720: Marine Day
+  20260811: Mountain Day
+  20260921: Respect for the Aged Day
+  20260922: Substitute Holiday
+  20260923: Autumnal Equinox Day
+  20261012: Sports Day
+  20261103: Culture Day
+  20261123: Labour Thanksgiving Day
 
 anniversary:
 # 2021
@@ -87,16 +126,27 @@ anniversary:
   20210911: RubyKaigi Takeout 2021
 # 2022
   20220224: Ruby's Birthday
-  20220908: RubyKaigi 2022 
-  20220909: RubyKaigi 2022
-  20220910: RubyKaigi 2022
+  20220908: RubyKaigi 2022 in Mie
+  20220909: RubyKaigi 2022 in Mie
+  20220910: RubyKaigi 2022 in Mie
 # 2023
   20230224: Ruby's Birthday
-  20230511: RubyKaigi 2023 
-  20230512: RubyKaigi 2023
-  20230513: RubyKaigi 2023
+  20230511: RubyKaigi 2023 in Matsumoto
+  20230512: RubyKaigi 2023 in Matsumoto
+  20230513: RubyKaigi 2023 in Matsumoto
 # 2024
   20240224: Ruby's Birthday
-  20240515: RubyKaigi 2024 
-  20240516: RubyKaigi 2024
-  20240517: RubyKaigi 2024
+  20240515: RubyKaigi 2024 in Okinawa
+  20240516: RubyKaigi 2024 in Okinawa
+  20240517: RubyKaigi 2024 in Okinawa
+# 2025
+  20250224: Ruby's Birthday
+  20250416: RubyKaigi 2025 in Matsuyama
+  20250417: RubyKaigi 2025 in Matsuyama
+  20250418: RubyKaigi 2025 in Matsuyama
+# 2026
+  20260224: Ruby's Birthday
+  2026xxxx: RubyKaigi 2026
+  2026xxxx: RubyKaigi 2026
+  2026xxxx: RubyKaigi 2026
+  
