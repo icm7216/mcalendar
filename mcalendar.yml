@@ -117,6 +117,23 @@ holiday:
   20261012: Sports Day
   20261103: Culture Day
   20261123: Labour Thanksgiving Day
+# 2027
+  20270101: New Year's Day
+# 202701xx: Coming-of-age Day
+  20270211: National Foundation Day
+  20270223: Emperor's Birthday
+# 202703xx: Vernal Equinox Day
+  20270429: Showa Day
+  20270503: Constitution Memorial Day
+  20270504: Greenery Day
+  20270505: Children's Day
+# 202707xx: Marine Day
+  20270811: Mountain Day
+# 202709xx: Respect for the Aged Day
+# 202709xx: Autumnal Equinox Day
+# 202710xx: Sports Day
+  20271103: Culture Day
+  20271123: Labour Thanksgiving Day
 
 anniversary:
 # 2021
@@ -146,6 +163,11 @@ anniversary:
   20250418: RubyKaigi 2025 in Matsuyama
 # 2026
   20260224: Ruby's Birthday
-# 2026xxxx: RubyKaigi 2026
-# 2026xxxx: RubyKaigi 2026
-# 2026xxxx: RubyKaigi 2026
+  20260422: RubyKaigi 2026 in Hakodate
+  20260423: RubyKaigi 2026 in Hakodate
+  20260424: RubyKaigi 2026 in Hakodate
+# 2027
+  20270224: Ruby's Birthday
+# 2027xxxx: RubyKaigi 2027
+# 2027xxxx: RubyKaigi 2027
+# 2027xxxx: RubyKaigi 2027
